@@ -17,13 +17,7 @@ if( !empty($block['className']) ) {
 
 
 // get ACF values
-$text = '';
-if( function_exists( get_field() ) ) {
-    $text = get_field('block_cc_quote') : 'das ist ein Beispieltext' ;
-}
-
-
-
+$text = get_field('block_cc_quote');
 
 ?>
 
@@ -34,9 +28,13 @@ if( function_exists( get_field() ) ) {
         <section class="w-full max-w-[920px] mx-auto pt-20 pb-[96px]">
         
             <p class="text-[28px] leading-9 desktop:leading-14 desktop:text-[45px] text-center text-[#595959]" style="font-family: 'Martel', serif !important;">
-               <?php echo $text; ?>
+               <?php if( $text ) { echo $text; }                 
+               
+               ?>
               
             </p>
+
+            
         
         </section>
 
