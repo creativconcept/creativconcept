@@ -157,13 +157,28 @@ function creativconcept_acf_blocks() {
 			'post_types' => $allowed_post_types,
             'render_template' => '../../plugins/creativconcept-blocks/blocks/text-text/text-text.php',
 			'enqueue_style' => get_template_directory_uri() . '/style.css',
-            'category'          => 'text',
+            'category'          => 'creativconcept',
             'icon'              => '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>',
 			'example'  => array(
 				'attributes' => array(
 					'mode' => 'preview'
 				)
 			)
+        ));
+
+        acf_register_block_type(array(
+            'name'              => 'cc-quote',
+            'title'             => __('CC Zitat'),
+            'post_types' => $allowed_post_types,
+            'render_template' => '../../plugins/creativconcept-blocks/blocks/cc-quote/cc-quote.php',
+            'enqueue_style' => get_template_directory_uri() . '/style.css',
+            'category'          => 'creativconcept',
+            'icon'              => '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>',
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview'
+                )
+            )
         ));
 
     }
