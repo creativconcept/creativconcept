@@ -278,3 +278,28 @@ function disable_emojis() {
    
    /* Remove DNS-fetch "//s.w.org" in head */
    add_filter( 'emoji_svg_url', '__return_false' );
+
+/***************************************************************** */
+/** Disable default Rest-API endpoints **/
+
+add_filter( 'rest_endpoints', 'disable_default_endpoints' );
+
+function disable_default_endpoints( $endpoints ) {
+
+	$routes = array( '/wp/v2/users', '/wp/v2/users/(?P<id>[\d]+)' );
+
+	foreach( $routes as $route ):
+		if( empty( $endpoints[ $route ] ) ):
+			continue;
+		endif;
+
+		foreach( $endpoints[ $route ] as $i => $handlers ):
+			if ( is_array( $handlers ) && isset( $handlers['methods'] ) && 'GET' === $handlers['methods'] ):
+				unset( $endpoints[ $route ][ $i ] );
+			endif;
+		endforeach;
+	endforeach;
+
+	return $endpoints;
+
+}
